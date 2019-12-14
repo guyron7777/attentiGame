@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:clickable="false"
+    >
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:src="@drawable/logod"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+
+        android:clickable="false"
+        android:layout_marginTop="105dp"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+
+
+        >
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutRows"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:background="@drawable/square"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="10dp">
+
+
+
+            <EditText
+                android:textSize="15dp"
+                android:gravity="center"
+                android:background="@null"
+                android:id="@+id/etRowsNum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/rows"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="X"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="25dp"
+            android:textColor="@color/attentiOrange"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:gravity="center"
+            android:id="@+id/relativeLayoutcol"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:background="@drawable/square"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="10dp">
+            <EditText
+                android:textSize="15dp"
+                android:gravity="center"
+                android:background="@null"
+                android:id="@+id/etColsNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/columns" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:textColor="@color/attentiOrange"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attenti_islands"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose" />
+
+
+    <Button
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:textColor="#ffffff"
+        android:background="@color/attentiOrange"
+        android:id="@+id/randomize"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/randomize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear" />
+
+    <Button
+        android:textStyle="bold"
+        android:layout_marginTop="22dp"
+        android:textColor="#ffffff"
+        android:background="@color/attentiOrange"
+        android:id="@+id/choose"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bonus_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/randomize" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/islands"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

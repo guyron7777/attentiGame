@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">attentiGame</string>
+    <string name="bonus_game">Bonus Game</string>
+    <string name="randomize">randomize</string>
+    <string name="attenti_islands">ATTENTI ISLANDS</string>
+    <string name="columns">COLUMNS</string>
+    <string name="rows">ROWS</string>
+</resources>
