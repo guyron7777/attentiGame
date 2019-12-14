@@ -56,31 +56,44 @@ public class MainActivity extends AppCompatActivity implements IslandsAdapter.It
         gridview.setAdapter(gridviewAdapter);
         viewModel.startAdapter(m, intent.getBooleanExtra("randomize", true));
 
-
+        /**
+         * observer to the final number to change the button text
+         */
         final Observer<String> islandsObserver = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String newName) {
                 solve.setText(newName + " islands\n" + "RESTART");
             }
         };
+        /**
+         * observer for when finish the initialize of the matrix and update the view(adapter)
+         */
         final Observer<Boolean> notifyObserver = new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable final Boolean doNotify) {
                 if (doNotify != null && doNotify) {
                     gridviewAdapter.notifyDataSetChanged();
+                    //return the value to false so if we come back to on resume so it will be false
                     viewModel.shouldNotify.setValue(false);
                 }
             }
         };
+        /**
+         * observer to know if we need to put click listener if it is the bonus round
+         */
         final Observer<Boolean> useClickObserver = new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable final Boolean isClick) {
                 if (isClick != null && isClick) {
                     gridviewAdapter.setClickListener(MainActivity.this);
+                    //return the value to false so if we come back to on resume so it will be false
                     viewModel.isUseClick.setValue(false);
                 }
             }
         };
+        /**
+         * observer to the colors painting - after all the check is finished we color the right positions with the right colors
+         */
         final Observer<ArrayList<ColorsObj>> changeColorsObserver = new Observer<ArrayList<ColorsObj>>() {
             @Override
             public void onChanged(@Nullable final ArrayList<ColorsObj> color) {
@@ -94,18 +107,6 @@ public class MainActivity extends AppCompatActivity implements IslandsAdapter.It
         viewModel.shouldNotify.observe(this, notifyObserver);
         viewModel.isUseClick.observe(this, useClickObserver);
         viewModel.getColorsObj.observe(this, changeColorsObserver);
-    }
-
-    private void hideTopBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Objects.requireNonNull(getSupportActionBar()).hide();
-        } else {
-            try {
-                getSupportActionBar().hide();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
@@ -143,5 +144,17 @@ public class MainActivity extends AppCompatActivity implements IslandsAdapter.It
             matrix[position / matrix[0].length][position % matrix[0].length] = 1;
         else matrix[position / matrix[0].length][position % matrix[0].length] = 0;
         gridviewAdapter.notifyItemChanged(position);
+    }
+
+    private void hideTopBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Objects.requireNonNull(getSupportActionBar()).hide();
+        } else {
+            try {
+                getSupportActionBar().hide();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
